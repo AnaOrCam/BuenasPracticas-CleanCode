@@ -1,40 +1,50 @@
 # ⚜ Buenas prácticas programando  - 2ºDAW ⚜
-## 1. Variables 
+## Tabla de contenidos
+* [1. Variables](#variables)
+* [2. Formato](#formato)
+* [3. Funciones](#funciones)
+* [4. Objetos](#objetos)
+* [5. Clases](#clases)
+* [6. Testing](#testing)
+* [7. Concurrencia](#concurrencia)
+* [8. Comentarios](#comentarios)
+  
+## Variables 
 > José Miguel e Izán
 ### Titulo
 Texto
 
-## 2. Formato
+## Formato
 > José Miguel e Izán
 ### Titulo
 Texto
 
-## 3. Funciones
+## Funciones
 > José Luis, David Galán y Alexis
 ### Titulo
 Texto
 
-## 4.Objetos 
+## Objetos 
 > José Luis, David Galán y Alexis
 ### Titulo
 Texto
 
-## 5.Clases 
+## Clases 
 > Ana y David Rosa
 ### Titulo
 Texto
 
-## 6.Testing
+## Testing
 > Ana y David Rosa
 ### Titulo
 Texto
 
-## 7.Concurrencia
+## Concurrencia
 > José Manuel
 ### Titulo
 Texto
 
-## 8.Comentarios
+## Comentarios
 > Andrés
 ### Titulo
 Texto
