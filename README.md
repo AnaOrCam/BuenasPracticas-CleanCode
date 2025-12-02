@@ -5,7 +5,7 @@
 * [3. Objetos](#objetos)
 * [4. Clases](#clases)
 * [5. Testing](#testing)
-* [6. Concurrencia](#concurrencia)
+* [6. Concurrencia](https://github.com/AnaOrCam/BuenasPracticas-CleanCode/blob/main/concurrenciaYComentarios/concurrencia.md)
 * [7. Comentarios](#comentarios)
 
 
