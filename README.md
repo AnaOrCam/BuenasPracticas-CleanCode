@@ -349,6 +349,5 @@ Texto
 
 # Comentarios
 > Andrés
-### Titulo 1
-## Titulo 2
+## Titulo 
 Texto
