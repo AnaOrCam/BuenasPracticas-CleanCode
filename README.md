@@ -24,7 +24,7 @@ Texto
 ### Titulo
 Texto
 
-##6.Testing
+## 6.Testing
 > Ana y David Rosa
 ### Titulo
 Texto
