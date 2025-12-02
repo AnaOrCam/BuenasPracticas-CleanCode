@@ -11,6 +11,7 @@
 ---
   
 # Variables y formato 
+> Autores: José Miguel e Izan (Grupo 1)
 > En esta sección exploramos cómo nombrar variables correctamente y cómo dar formato al código para que sea legible, basándonos en los principios de *Clean Code* adaptados a JavaScript.
 
 ## 1. Nombres con Intención Reveladora
