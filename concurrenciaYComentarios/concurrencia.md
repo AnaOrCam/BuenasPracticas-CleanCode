@@ -33,29 +33,25 @@ Usamos async/await en aquellas capas de nuestro programa destinadas al acceso a 
 **Implementación**
 
 ```javascript
-function getPosts(idUser) {
-  return new Promise((resolve, reject) => {
-    const peticion = new XMLHttpRequest();
-    peticion.open('GET', SERVER + '/posts?userId=' + idUser);
-    peticion.send();
-    peticion.addEventListener('load', () => {
-      if (peticion.status === 200) {
-        resolve(JSON.parse(peticion.responseText));
-      } else {
-        reject("Error " + peticion.status + " (" + peticion.statusText + ") en la petición");
-      }
-    })
-    peticion.addEventListener('error', () => reject('Error en la petición HTTP'));
-  })
+function obtenerCodigoUsuario() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("Codigo del usuario: 101");
+    }, 2000);
+  });
 }
 ```
 
 ```javascript
-let idUser = document.getElementById('id-usuario').value;
-    if (isNaN(idUser) || idUser == '') {
-      alert('Debes introducir un número');
-    } else {
-      const posts = await getPosts(idUser);
-    }
+async function procesarSolicitud() {
+  console.log("Iniciando la solicitud...");
+
+  try {
+    let codigo = await obtenerCodigoUsuario();
+    console.log("Solicitud completada. Codigo:" + codigo);
+  } catch (error) {
+    console.error("No se pudo completar la solicitud", error);
+  }
+}
 ```
 
