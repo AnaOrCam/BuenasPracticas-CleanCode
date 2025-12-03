@@ -6,6 +6,6 @@
 * [4. Clases](#clases)
 * [5. Testing](#testing)
 * [6. Concurrencia](https://github.com/AnaOrCam/BuenasPracticas-CleanCode/blob/main/concurrenciaYComentarios/concurrencia.md)
-* [7. Comentarios](#comentarios)
+* [7. Comentarios](https://github.com/AnaOrCam/BuenasPracticas-CleanCode/blob/main/concurrenciaYComentarios/Comentarios.md)
 
 
