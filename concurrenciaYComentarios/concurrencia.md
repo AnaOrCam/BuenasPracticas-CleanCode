@@ -19,16 +19,16 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 * Hace que nuestro código sea mas complejo
 
 ## Concurrencia asíncrona
-El propósito de async/await es permitirnos escribir código asíncrono, es decir, que no bloquea
-el hilo principal de ejecución de nuestro programa.
+En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
+nos permite escribir código asíncrono. Se trata de código que no bloquea el hilo principal de ejecución 
+de nuestro programa.
 
-En javascript definimos funciones como asíncronas mediante "async", funciones que siempre
-van a devolver una promesa. Es una función que maneja unas operaciones que toman tiempo.
+Definimos funciones asíncronas mediante "async", que siempre van a devolver una promesa. Es una función que 
+maneja una serie de operaciones que toman en resolverse.
+Dentro de estas funciones, usamos "await", que pausa la ejecución de nuestro programa hasta que se cumpla
+dicha promesa y tengamos el valor de retorno.
 
-Dentro de estas funciones, usamos "await", que pausa la ejecución hasta que se cumpla
-dicha promesa y tengamos el valor devuelto.
-
-Usamos async/await en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
+Async/await es importante en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
 
 **Implementación**
 
