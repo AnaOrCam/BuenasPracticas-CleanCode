@@ -27,7 +27,7 @@ es decir, la función principal solo se completará una vez que se cumpla la fun
 **Mala implementación ❌**
 > Tarea síncrona
 ```javascript
-const task= () => console.log('Tarea completada');
+const tarea= () => console.log('Tarea completada');
 tarea()
 ````
 
