@@ -1,5 +1,5 @@
 # Concurrencia
-Realizado por _Jose Manuel Vilchez Arenas_
+_Realizado por Jose Manuel Vilchez Arenas_
 
 ## ¿Qué es la concurrencia?
 La concurrencia es una estrategia que nos ayuda a separar lo que se hace
