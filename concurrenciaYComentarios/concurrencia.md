@@ -19,43 +19,39 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 * Hace que nuestro código sea mas complejo
 
 ## Concurrencia asíncrona
-El propósito de async/await es permitirnos escribir código asíncrono, es decir, que no bloquea
-el hilo principal de ejecución de nuestro programa.
+En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
+nos permite escribir código asíncrono. Se trata de código que no bloquea el hilo principal de ejecución 
+de nuestro programa.
 
-En javascript definimos funciones como asíncronas mediante "async", funciones que siempre
-van a devolver una promesa. Es una función que maneja unas operaciones que toman tiempo.
+Definimos funciones asíncronas mediante "async", que siempre van a devolver una promesa. Es una función que 
+maneja una serie de operaciones que toman en resolverse.
+Dentro de estas funciones, usamos "await", que pausa la ejecución de nuestro programa hasta que se cumpla
+dicha promesa y tengamos el valor de retorno.
 
-Dentro de estas funciones, usamos "await", que pausa la ejecución hasta que se cumpla
-dicha promesa y tengamos el valor devuelto.
-
-Usamos async/await en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
+Async/await es importante en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
 
 **Implementación**
 
 ```javascript
-function getPosts(idUser) {
-  return new Promise((resolve, reject) => {
-    const peticion = new XMLHttpRequest();
-    peticion.open('GET', SERVER + '/posts?userId=' + idUser);
-    peticion.send();
-    peticion.addEventListener('load', () => {
-      if (peticion.status === 200) {
-        resolve(JSON.parse(peticion.responseText));
-      } else {
-        reject("Error " + peticion.status + " (" + peticion.statusText + ") en la petición");
-      }
-    })
-    peticion.addEventListener('error', () => reject('Error en la petición HTTP'));
-  })
+function obtenerCodigoUsuario() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("Codigo del usuario: 101");
+    }, 2000);
+  });
 }
 ```
 
 ```javascript
-let idUser = document.getElementById('id-usuario').value;
-    if (isNaN(idUser) || idUser == '') {
-      alert('Debes introducir un número');
-    } else {
-      const posts = await getPosts(idUser);
-    }
+async function procesarSolicitud() {
+  console.log("Iniciando la solicitud...");
+
+  try {
+    let codigo = await obtenerCodigoUsuario();
+    console.log("Solicitud completada. Codigo:" + codigo);
+  } catch (error) {
+    console.error("No se pudo completar la solicitud", error);
+  }
+}
 ```
 

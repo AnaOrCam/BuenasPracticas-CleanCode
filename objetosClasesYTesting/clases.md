@@ -8,7 +8,7 @@
 
 **Mal ejemplo 🔴**
 
-```
+```javascript
 class Usuario {
     saludar() {
         console.log(`Hola, mi nombre es ${this.nombre}`);
@@ -45,7 +45,7 @@ class Usuario {
 
 ```
 **Buen ejemplo 🟢**
-```
+```javascript
 class Usuario {
   // 1. Definición de propiedades
   constructor(nombre, correo, edad) {
@@ -89,7 +89,7 @@ class Usuario {
 
 **Mal ejemplo 🔴**
 
-```
+```javascript
 // Crea un constructor de funcion Animal
 // Le asigna una edad para cada instancia
 // Añade un metodo mover a todas las instacias de animal
@@ -131,7 +131,7 @@ Humano.prototype.hablar = function hablar() {};
 ```
 
 **Buen Ejemplo 🟢**
-```
+```javascript
 class Animal {
   constructor(edad) {
     this.edad = edad;
@@ -166,7 +166,7 @@ class Humano extends Mamifero {
 Su principal ventaja es que cada método devuelve el objeto permitiendo encadenar varios metodos seguidos en una sola expresion , por lo que ademas de hacer el codigo más compacto , tambien lo hace más facil de seguir</p>
 
 **Mal ejemplo🔴**
-```
+```javascript
 class Coche {
   constructor(marca, modelo, color) {
     this.marca = marca;
@@ -197,7 +197,7 @@ coche.guardar();
 ```
 
 **Buen ejemplo 🟢**
-```
+```javascript
 class Coche {
   constructor(marca, modelo, color) {
     this.marca = marca;
@@ -236,7 +236,7 @@ const coche = new Coche("Ford", "F-150", "rojo")
 <p> Es necesario saber diferenciar cuando es necesario usar la herencia y la composicion , mientras que la herencia se basa en "es un", por ejemplo un humano es un mamifero , la composicion se basa en "tiene un", por ejemplo un empleado tiene una información de impuestos de empleado</p>
 
 **Mal Ejemplo🔴**
-```
+```javascript
 class Empleado {
   constructor(nombre, correoElectronico) {
     this.nombre = nombre;
@@ -256,7 +256,7 @@ class InformacionImpuestosEmpleado extends Empleado {
 ```
 
 **Buen Ejemplo 🟢**
-```
+```javascript
 class InformacionImpuestosEmpleado {
   constructor(ssn, salario) {
     this.ssn = ssn;
