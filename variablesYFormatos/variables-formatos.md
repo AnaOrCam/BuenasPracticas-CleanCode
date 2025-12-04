@@ -182,6 +182,86 @@ class Animal {}
 
 ---
 
+## 9. Funciones que llaman y funciones que son llamadas, deberían estar cerca
+
+Mantén las funciones que llaman y las que son llamadas próximas en el código. Agrupa funciones relacionadas, evita dispersarlas en diferentes partes del archivo y organiza su orden de manera lógica para que la lectura sea natural y coherente. Usa módulos si el grupo de funciones crece demasiado.
+
+**❌ Mal:**
+```javascript
+class Calculator {
+    add(a, b) {
+        return a + b;
+    }
+
+    divide(a, b) {
+        if (b === 0) return 'Error';
+        return a / b;
+    }
+
+    calculate(operation, a, b) {
+        switch (operation) {
+            case 'add':
+                return this.add(a, b);
+            case 'subtract':
+                return this.subtract(a, b);
+            case 'divide':
+                return this.divide(a, b);
+            default:
+                return 'Operation not supported';
+        }
+    }
+
+    subtract(a, b) {
+        return a - b;
+    }
+
+    multiply(a, b) {
+        return a * b;
+    }
+}
+
+```
+
+**✅ Bien:**
+```javascript
+class Calculator {
+    add(a, b) {
+        return a + b;
+    }
+
+    subtract(a, b) {
+        return a - b;
+    }
+
+    multiply(a, b) {
+        return a * b;
+    }
+
+    divide(a, b) {
+        if (b === 0) return 'Error';
+        return a / b;
+    }
+
+    calculate(operation, a, b) {
+        switch (operation) {
+            case 'add':
+                return this.add(a, b);
+            case 'subtract':
+                return this.subtract(a, b);
+            case 'multiply':
+                return this.multiply(a, b);
+            case 'divide':
+                return this.divide(a, b);
+            default:
+                return 'Operation not supported';
+        }
+    }
+}
+
+```
+
+---
+
 ## Resumen: Principios Universales
 
 Estos conceptos aplican a **cualquier lenguaje**:
