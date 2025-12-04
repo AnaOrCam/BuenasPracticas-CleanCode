@@ -2,7 +2,7 @@
 > Jose Manuel Vilchez Arenas
 
 ## ¿Qué es la concurrencia?
-La concurrencia es una estrategia de desacoplamiento que nos ayuda a separar lo que se hace
+La concurrencia es una estrategia que nos ayuda a separar lo que se hace
 en nuestro código del cuando se hace. En aplicaciones de un solo hilo, el qué y cuando están
 juntos.
 
