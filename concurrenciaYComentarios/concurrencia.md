@@ -24,9 +24,9 @@ nos permite realizar peticiones asíncronas. Se trata de código que no bloquea 
 de nuestro programa.
 
 Definimos funciones asíncronas mediante "async", que siempre van a devolver una promesa. Es una función que 
-maneja una serie de operaciones que toman en resolverse.
+maneja una serie de operaciones que tardan un tiempo en resolverse.
 Dentro de estas funciones, usamos "await", que pausa la ejecución de nuestro programa hasta que se cumpla
-dicha promesa y tengamos el valor de retorno.
+dicha promesa y tengamos el valor de retorno (resolve)
 
 Async/await es importante en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
 
