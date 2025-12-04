@@ -17,7 +17,7 @@ Es más fácil de entender y es como todos lo conocemos, es información añadid
 
 Son más complejas de entender, ya que solemos entender la función que extrae un valor devuelto, no en forma de argumentos, esto hace que haya más comprobaciones.
 
-    SetupTeardownIncluder.render(pageData) // representa los datos en el objeto pageData
+    GeneradorDeFacturas.renderizar(datosDelPedido); // datosDelPedido argumento de entrada GeneradorDeFacturas argumento de salida
 
 ### Formas Monádicas habituales
 Hay dos motivos principales para pasar un solo argumento a una función.
@@ -58,40 +58,41 @@ Las funciones diádicas las vamos a tener que usar, pero si podemos convertirlas
 
 ❌ Mal:
 
-    // Tienes que entender la relación entre 'stream' y 'name' y recordar el orden.
-    function writeField(outputStream, name) {
-        outputStream.write(name);
-    }
+    // Tienes que entender la relación entre 'dbConnection' y 'usuario' y recordar el orden.
+    function guardarUsuario(dbConnection, usuario) {
+    dbConnection.insert("users", usuario);
+}
 
 ✅ Bien:
 
     // Pasamos el argumento complejo en el constructor de la clase.
-    const writer = new FieldWriter(outputStream);
-    writer.write(name);
+    const repo = new RepositorioUsuarios(miConexionSQL);
+    repo.guardar(usuario);
+   
 
 ### Triadas
 Las funciones con 3 argumentos nos generan más problemas cuando tengamos que ordenar, ignorar o pararse a entenderlos.
 
 ❌ Mal:
 
-    / Obliga a pausar la lectura para ignorar el primer parámetro.
-    assertEquals("Error de conexión", "Conectado", estadoActual);
+    / Obliga a pausar la lectura para pensar que hace el 3 argumento.
+    assertEquals(5, usuario.getIntentos(), 0);
 
 ✅ Bien:
 
-    // Comparar números decimales correctamente y es fácil de comprender.
-    assertFloatEquals(1.0, amount, 0.001);  
+    // Se comprende leyendo.
+    assertThat(usuario.getIntentos()).isEqualTo(5);  
 
 ### Objeto de argumento
 Cuando una función parece necesitar dos o más argumentos, es posible que alguno de ellos se tenga una clase propia.
 
 ❌ Mal:
 
-    Circle makeCircle (double x, double y, double radius);
+    buscarReservas(Date fechaInicio, Date fechaFin);
 
 ✅ Bien:
 
-    Circle makeCircle(Point center, double radius);
+    buscarReservas(DateRange rango);
 
 ### Listas de argumentos
 En algunos momentos hay que pasar una cantidad variable de argumentos. Si los argumentos se procesan de la misma forma es un tipo List. Entonces una función que reciba String y List es diádica.
@@ -133,13 +134,13 @@ Podemos mejorar la claridad escribiendo el nombre del argumento dentro del nombr
 
 ❌ Mal:
 
-    // Es difícil recordar si 'expected' va primero o segundo.
-    assertEqual(expected, actual);
+    // Es difícil saber cual se copia sobre otro
+    copiar(archivoA, archivoB);
 
 ✅ Bien:
 
-    // El nombre de la función dicta el orden. Elimina la ambigüedad.
-    assertExpectedEqualsActual(expected, actual);
+    // El nombre de la función dicta el orden.
+    copiarDesdeHacia(origen, destino);
 
 ## Sin efectos secundario
 Los efectos secundarios son las consecuencias de mentiras, ya que en muchos casos promete una cosa, pero tambien hace otras cosas ocultas. Alguna vez, realiza cambios inesperados en variables de la clase.
@@ -173,13 +174,13 @@ Usar argumentos de salida hace que al revisar el código sea más dificil su com
 
 ❌ Mal:
 
-    // Parece una entrada, pero en realidad modifica 's'.
-    agregarPie(s);
+    // Puede generar duda de lo que hace
+    aplicarDaño(jugador, 50);
 
 ✅ Bien:
 
-    // Se ve claro que 'informe' es el objeto que se modifica a sí mismo.
-    informe.agregarPie();
+    // Se ve claro que 'jugador' es el objeto que se modifica a sí mismo.
+    jugador.recibirDaño(50);
 
 ## Separación de consultas de comando
 La función debe centrarse en hacer o responder, no ambas. Cambiar el estado o devolver información, no ambas. Esto si se hace junto crea confusión.
@@ -200,4 +201,5 @@ Si separamos el set del if se hace más fácil la comprensión.
     if (existeAtributo("nombre")) {
         // Luego ejecutamos
         setAtributo("nombre", "Pepe");
+
     }
