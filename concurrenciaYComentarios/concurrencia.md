@@ -45,6 +45,8 @@ function procesarSolicitud() {
   } catch (error) {
     console.error("No se pudo completar la solicitud", error);
   }
+
+procesarSolicitud()
 ````
 
 **Petición asíncrona ✔**
