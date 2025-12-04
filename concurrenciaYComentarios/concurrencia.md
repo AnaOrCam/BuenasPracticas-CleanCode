@@ -18,9 +18,9 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 * Difícil diseño e implementación
 * Hace que nuestro código sea mas complejo
 
-## Concurrencia asíncrona
+## Llamadas asíncronas
 En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
-nos permite escribir código asíncrono. Se trata de código que no bloquea el hilo principal de ejecución 
+nos permite realizar peticiones asíncronas. Se trata de código que no bloquea el hilo principal de ejecución 
 de nuestro programa.
 
 Definimos funciones asíncronas mediante "async", que siempre van a devolver una promesa. Es una función que 
@@ -30,7 +30,25 @@ dicha promesa y tengamos el valor de retorno.
 
 Async/await es importante en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
 
-**Implementación**
+**Petición síncrona ❌**
+
+````javascript
+function obtenerCodigoUsuario() {
+  return "Codigo del usuario: 101";
+}
+
+function procesarSolicitud() {
+  console.log("Iniciando la solicitud...");
+
+  try {
+    let codigo = obtenerCodigoUsuario();
+    console.log("Solicitud completada. Codigo: " + codigo);
+  } catch (error) {
+    console.error("No se pudo completar la solicitud", error);
+  }
+````
+
+**Petición asíncrona ✔**
 
 ```javascript
 function obtenerCodigoUsuario() {
