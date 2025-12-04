@@ -12,11 +12,10 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 ### Ventajas
 * Mejora del rendimiento de nuestra aplicación
 * Mejora la estructura de todo el programa
-* Código mas limpio
 
 ### Desventajas
 * Difícil diseño e implementación
-* Hace que nuestro código sea mas complejo
+* Mayor complejidad en el código
 
 ## Peticiones asíncronas
 En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
