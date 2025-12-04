@@ -27,8 +27,6 @@ maneja una serie de operaciones que tardan un tiempo en resolverse.
 Dentro de estas funciones, usamos "await", que pausa la ejecución de nuestro programa hasta que se cumpla
 dicha promesa y tengamos el valor de retorno (resolve)
 
-Async/await es importante en aquellas capas de nuestro programa destinadas al acceso a la base de datos.
-
 **Petición síncrona ❌**
 
 ````javascript
