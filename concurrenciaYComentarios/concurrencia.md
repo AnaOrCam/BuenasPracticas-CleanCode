@@ -72,5 +72,7 @@ async function procesarSolicitud() {
     console.error("No se pudo completar la solicitud", error);
   }
 }
+
+procesarSolicitud()
 ```
 
