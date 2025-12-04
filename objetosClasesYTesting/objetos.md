@@ -1,7 +1,7 @@
 
-## Objetos y estructuras de datos
+# Objetos y estructuras de datos
 
-- Utilizar getters y setters: 
+## *Utilizar getters y setters:* 
 
 Es mejor usar getters y setter que simplemente acceder a esa propiedad del objeto por las siguientes razones:
         
@@ -56,7 +56,7 @@ Es mejor usar getters y setter que simplemente acceder a esa propiedad del objet
 
 ```
 
-- Utilizar atributos/métodos privados en los objetos:
+## *Utilizar atributos/métodos privados en los objetos:*
 
 Mediante atributos privados en clases o *clousures* conseguimos:
     
