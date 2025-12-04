@@ -20,8 +20,7 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 
 ## Llamadas asíncronas
 En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
-nos permite realizar peticiones asíncronas. Se trata de código que no bloquea el hilo principal de ejecución 
-de nuestro programa.
+nos permite realizar peticiones asíncronas. 
 
 Definimos funciones asíncronas mediante "async", que siempre van a devolver una promesa. Es una función que 
 maneja una serie de operaciones que tardan un tiempo en resolverse.
