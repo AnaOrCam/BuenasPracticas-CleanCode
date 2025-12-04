@@ -18,7 +18,7 @@ recursos computacionales. Los encargados de proporcionar concurrencia son los hi
 * Difícil diseño e implementación
 * Hace que nuestro código sea mas complejo
 
-## Llamadas asíncronas
+## Peticiones asíncronas
 En javascript, logramos concurrencia en nuestro código mediante la implementación de async/await, que
 nos permite realizar peticiones asíncronas. 
 
