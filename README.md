@@ -11,7 +11,7 @@
 
 ## Tabla de contenidos
 * [1. Variables y formato](#variables-y-formato)
-* [2. Funciones (parte 1)](#funciones)
+* [2. Funciones (parte 1)](#2-funciones)
 * [3. Funciones (parte 2)](#argumentos-de-funciones)
 * [4. Objetos](#objetos-y-estructuras-de-datos)
 * [5. Clases](#clases)
