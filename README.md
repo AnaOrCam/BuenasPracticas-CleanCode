@@ -727,7 +727,7 @@ function tratarLista(lista) {
 }
 
 // ¿"noEstaDesactivado"? 
-// O sea, si devuelve 'true', es que NO está desactivado, ergo... está activado.
+// O sea, si devuelve 'true', es que NO está desactivado, es decir... está activado.
 // Y si hago un if (!noEstaDesactivado)... ¡Socorro!
 function noEstaDesactivado(usuario) {
     return usuario.estado !== 'INACTIVO';
