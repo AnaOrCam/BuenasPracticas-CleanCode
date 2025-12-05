@@ -1,4 +1,4 @@
-## 2. FUNCIONES
+# 2. FUNCIONES
 
 Las **funciones** son una estructura fundamental en el código de cualquier aplicación. Son los ladrillos básicos que permiten armar y organizar la arquitectura del software. 
 
@@ -6,7 +6,7 @@ Aplicar en ellas prácticas de **Código Limpio** garantiza la legibilidad, la m
 
 A continuación veremos, con ejemplos en JavaScript, algunas de las principales medidas que podemos tomar para escribir y refactorizar funciones como auténticos **desarrolladores seniors**.
 
-### 2.1. El tamaño importa
+## 2.1. El tamaño importa
 
 La primera regla fundamental es: **cuanto más pequeñas sean las funciones mejor.**
 
@@ -76,7 +76,7 @@ function mostrarMensajeExito() {
 }
 ```
 
-### 2.2. El síndrome de la función orquesta (y cómo curarlo)
+## 2.2. El síndrome de la función orquesta (y cómo curarlo)
 
 El mantra sagrado a recordar es: **cada función solo debe hacer una tarea, debe hacerla bien y que sea lo único que haga.** Queremos que toquen su instrumento, no que dirijan toda la orquesta.
 
@@ -86,7 +86,7 @@ Al principio de los años 2000 el informático y escritor Robert C. Martin conci
 
 Esta pauta de crear funciones que solo cumplan una tarea responde al objetivo del primer principio SOLID y uno de los más importantes: el **Principio de Responsabilidad Única (SRP)**. Este dice que una función, clase o módulo solo puede tener un motivo para cambiar.
 
-#### Trucos para saber si hace más de una cosa:
+### Trucos para saber si hace más de una cosa:
 
 - Si el cuerpo de la función puede dividirse en secciones, hace más de una cosa.
 
@@ -180,7 +180,7 @@ function guardarUsuario(nombre, email) {
 }
 ```
 
-### 2.3. El arquitecto no pone ladrillos
+## 2.3. El arquitecto no pone ladrillos
 
 Una función puede encargarse de tareas que, por ejemplo, impliquen utilizar la lógica de negocio como *"calcular un cambio de divisa"* o *"finalizar una compra"*. Esto sería un **alto nivel de abstracción.**
 
@@ -190,9 +190,9 @@ Lo que esta norma nos indica es que mezclar conceptos de alto nivel y de bajo ni
 
 Tener sentencias que realizan tareas con diferentes niveles de abstracción supone un mareo continuo para quien lea tu código: o hablas de cómo funciona la empresa, o hablas de cómo funciona el navegador, pero no cambies de tema en cada línea.
 
-#### El código es un periódico: la regla descendente
+### El código es un periódico: la regla descendente
 
-Para evitar este entuerto se recomienda aplicar la **Regla Descendente**. Queremos que el código se lea como un periódico: los titulares arriba y los detalles abajo. Así pues, las funciones deben declararse de arriba hacia abajo desde el mayor nivel de abstracción hasta el menor.
+Para evitar este entuerto se recomienda aplicar la **Regla Descendente**. Queremos que el código se lea como un periódico: los titulares arriba y los detalles abajo. Así pues, las funciones deben declararse de arriba hacia abajo desde el mayor nivel de abstracción hasta el menor. 
 
 #### ❌ Mezclando niveles (HTML sucio y lógica)
 
@@ -257,7 +257,7 @@ function pintarEnPantalla(lista, total) {
 }
 ```
 
-### 2.4. La trampa mortal de los switch
+## 2.4. La trampa mortal de los switch
 
 Las sentencias `switch` son peligrosas, al igual que las cadenas de `if/else`. Son piezas de código inevitablemente largas y farragosas que acostumbran a pegarle una patada al Principio de Responsabilidad Única mediante sus múltiples `case`.
 
@@ -301,7 +301,7 @@ function obtenerSonido(animal) {
 }
 ```
 
-### 2.5. El arte del bautizo
+## 2.5. El arte del bautizo
 
 Bautizar correctamente a tus funciones es un arte en sí mismo. El nombre es la carta de presentación de una función. Si necesitas entrar a mirar el código para saber qué hace la función, su nombre ha fracasado.
 
@@ -312,26 +312,47 @@ Es aconsejable y, prácticamente una convención, que los nombres de las funcion
 #### ❌ Nombres crípticos
 
 ```js
-// ¿Qué es 'd'? ¿Días? ¿Dedos? ¿Datos?
-// ¿Qué hace 'proc'? ¿Procesar? ¿Procrear?
-function proc(d) { 
-  return d * 86400; // ¿Qué es este número mágico?
+// ¿"Tratar"? ¿Qué es esto, una consulta médica?
+// ¿"lista"? ¿La de la compra? ¿La de los Reyes Magos?
+function tratarLista(lista) {
+    for (let i = 0; i < lista.length; i++) {
+        lista[i].precio = lista[i].precio * 1.21; // ¿Qué es este número mágico? ¿Por qué 1.21?
+    }
 }
 
-function a(n, e) { // a... ¿de añadir?
-    alert("Hola " + n);
+// ¿"noEstaDesactivado"? 
+// O sea, si devuelve 'true', es que NO está desactivado, ergo... está activado.
+// Y si hago un if (!noEstaDesactivado)... ¡Socorro!
+function noEstaDesactivado(usuario) {
+    return usuario.estado !== 'INACTIVO';
+}
+
+// Si mañana cambias el Array por una Base de Datos
+// te toca cambiar el nombre de la función en 50 sitios. ¡Mal!
+function buscarEnArrayPorIndice(id) {
+    return inventario.find(item => item.id === id);
 }
 ```
 
 #### ✅ Nombres que cuentan historias
 
 ```js
-function convertirDiasASegundos(dias) {
-  const SEGUNDOS_EN_UN_DIA = 86400;
-  return dias * SEGUNDOS_EN_UN_DIA;
+// Ah, amigo. Ahora sé exactamente qué va a pasar.
+function aplicarIvaAProductos(productos) {
+    for (let producto of productos) {
+        producto.precio = producto.precio * 1.21;
+    }
 }
 
-function saludarUsuario(nombre) { 
-    alert("Hola " + nombre);
+// Mucho más fácil. ¿Está activo? Sí o no.
+// Siempre intenta buscar la versión positiva de la condición.
+function estaActivo(usuario) {
+    return usuario.estado !== 'INACTIVO';
+}
+
+// Me da igual si buscas en un array, en un Excel o en una servilleta.
+// Yo quiero recuperar un producto. Punto.
+function recuperarProductoPorIdentificador(id) {
+    return inventario.find(item => item.id === id);
 }
 ```
