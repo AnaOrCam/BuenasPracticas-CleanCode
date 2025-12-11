@@ -1594,8 +1594,8 @@ en nuestro código del cuando se hace. En aplicaciones de un solo hilo, el qué 
 juntos.
 
 En definitiva, se busca ejecutar varias tareas en paralelo entre sí para aprovechar mejor los 
-recursos computacionales. Los encargados de proporcionar concurrencia son las  llamadas 
-peticiones asíncronas, que permiten separar la ejecución de nuestro programa en varios hilos.
+recursos computacionales. Los encargados de proporcionar concurrencia son las llamadas 
+tareas asíncronas, que permiten separar la ejecución de nuestro programa en varios hilos.
 
 ### Ventajas
 * Mejora del rendimiento de nuestra aplicación
@@ -1607,34 +1607,24 @@ peticiones asíncronas, que permiten separar la ejecución de nuestro programa e
 
 ---
 
-## Callbacks
-Son funciones que se pasan como parámetros a otras funciones para ser ejecutadas una vez esta última termina, 
-es decir, la función principal solo se completará una vez que se cumpla la función que es pasada como parámetro.
+## NO USES CALLBACKS ❗
+Los callbacks no son limpios en legibilidad ni en cuanto al formato de texto. Una buena práctica es la 
+implementación de promesas, que representan la finalización o fracaso de una tarea asíncrona.
 
 **Mala implementación ❌**
-> Tarea síncrona
 ```javascript
-const tarea= () => console.log('Tarea completada');
-tarea()
-````
-
-> Tarea asíncrona
-```javascript
-const tarea = (callback) =>{
-    console.log('Iniciando tarea...');
-    //El callback se ejecutará tras 2 segundos
-    setTimeout(() => callback(), 2000);
+const tarea = (callback) => {
+  const num = 1 + Math.floor(Math.random() * 6)
+    setTimeout(() => {
+        if (num == 6){
+            console.log('Tarea completada con éxito');
+        }else{
+            console.log('No se pudo completar la tarea')}, 2000);    
 }
-
 tarea()
+
 ````
-
-## Promesas
-Una buena práctica en nuestro código es la implementación de promesas en lugar de los callbacks que hemos
-visto anteriormente. Una promesa es un objeto que representa la finalización (o el fracaso) de una operación asíncrona 
-y su valor resultante. Trabajamos con ella mostrando unos resultados u otros en función del retorno.
-
-> Creamos la promesa 🧐
+**Buena implementación ✔**
 ```javascript
 const hacerTarea= () => {
     return new Promise((resolve, reject)=>{
@@ -1645,51 +1635,39 @@ const hacerTarea= () => {
         reject(num);
     })
 }
+
+hacerTarea()
+        .then((num) => console.log('Tarea completada con éxito', num))
+        .catch((num) => console.log('No se pudo completar la tarea'))
 ```
 
-> Consumimos la promesa 🧐
-```javascript
-doTask()
-        .then((num) => console.log('Promesa cumplida: ', num))
-        .catch((num) => console.log('No se ha cumplido la promesa: ', num))
-```
-
-## Async/await
-Ya hemos visto en el ejemplo anterior como conseguir concurrencia en nuestro código mediante promesas.
-Podemos mejorar aún mas nuestro código mediante la implementación de _async/await_
-
-Definimos funciones asíncronas mediante _async_, estas siempre van a devolver una promesa. Es una función 
-que maneja una serie de operaciones que tardan un tiempo en resolverse.
-Dentro de estas funciones, usamos _await_, que pausa la ejecución de nuestro programa hasta que se cumpla
-dicha promesa y tengamos el valor de retorno _resolve_
-
-
-**Buena implementación ✔**
+## Async/await ✅
+Podemos mejorar aún mas nuestro código mediante la implementación de async/await.
+Añadimos a funciones el prefijo _async_ para usar esta función de forma imperativa sin
+emplear ningun _.then()_ o _.catch()_
 
 ```javascript
-function obtenerCodigoUsuario() {
+function completaTarea() {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve("Codigo del usuario: 101");
-    }, 2000);
+        if (num == 6){
+            console.log('Tarea completada con éxito');
+        }else{
+            console.log('No se pudo completar la tarea');}, 2000);    
   });
 }
-```
 
-```javascript
-async function procesarSolicitud() {
-  console.log("Iniciando la solicitud...");
-
+async function solicitud() {
   try {
-    let codigo = await obtenerCodigoUsuario();
-    console.log("Solicitud completada. Codigo:" + codigo);
+    let resultado = await completaTarea();
+    console.log(resultado);
   } catch (error) {
-    console.error("No se pudo completar la solicitud", error);
+    console.error('No se pudo completar la tarea. ', error);
   }
 }
-
-procesarSolicitud()
+solicitud()
 ```
+> En definitiva, esta tarea se completará si el número ha sido un 6 y tras un breve retardo de 2 segundos.
 
 # Comentarios
 
