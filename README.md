@@ -1607,7 +1607,7 @@ tareas asíncronas, que permiten separar la ejecución de nuestro programa en va
 
 ---
 
-## NO USES CALLBACKS ❗
+## NO USES CALLBACKS ⚠
 Los callbacks no son limpios en legibilidad ni en cuanto al formato de texto. Una buena práctica es la 
 implementación de promesas, que representan la finalización o fracaso de una tarea asíncrona.
 
