@@ -10,9 +10,9 @@ Es mejor usar getters y setter que simplemente acceder a esa propiedad del objet
 1. Se centraliza el acceso a la propiedad en un solo lugar, eso hace mas fácil el uso de validaciones, errores, conversiones... etc.
 1. Permite el uso de lazy load.
 
-```js
-❌
 
+❌
+```js
     let usuario1={
         nombre: 'Ana',
         apellidos: 'Montes',
@@ -26,26 +26,23 @@ Es mejor usar getters y setter que simplemente acceder a esa propiedad del objet
     }else{
         console.error('Usuario no tiene una calle definida');
     }
-
+```
 ✅
-
+```js
     class Usuario{
-        #nombre;
-        #apellidos;
-        #direccion;
 
         constructor(nombre, apellidos, dir){
-            this.#nombre=nombre;
-            this.#apellidos=apellidos;
-            this.#direccion=dir;
+            this.nombre=nombre;
+            this.apellidos=apellidos;
+            this.direccion=dir;
         }
 
         get getDireccion(){
-            return this.#direccion;
+            return this.direccion;
         }
 
         set setDireccion(dirNueva){
-            this.#direccion=dirNueva;
+            this.direccion=dirNueva;
         }
     }
 
@@ -53,8 +50,8 @@ Es mejor usar getters y setter que simplemente acceder a esa propiedad del objet
 
     let dirNueva='calle Nueva, 12';
     usuario.setDireccion=dirNueva;
-
 ```
+
 
 ## *Utilizar atributos/métodos privados en los objetos:*
 
@@ -62,34 +59,53 @@ Mediante atributos privados en clases o *clousures* conseguimos:
     
 1. Encapsulación: la lógica interna del objeto queda oculta.
 1. Evitar errores externos: no se accede directamente a la modificación de atributos.
-1.  Control de acceso a los atributos mediante métodos públicos o getters y setters.
+1. Control de acceso a los atributos mediante métodos públicos o getters y setters.
 
+
+
+❌ 
 ```js
-
-❌
-
     let usuario1={
         nombre: 'Ana',
         apellidos: 'Montes',
     };
 
     usuario1.nombre='Maria';
+```
 
-✅
-
+✅ - Usando clousure con _ delante de la propiedad para indicar (por convención) que es privado.
+```js
     function usuario(nombre){
-        let nombreUsuario=nombre;
+        let _nombreUsuario=nombre;
 
         this.getNombre=function(){
-            return nombreUsuario;
+            return _nombreUsuario;
         }
         this.setNombre=function(nuevoNombre){
-            nombreUsuario=nuevoNombre;
+            _nombreUsuario=nuevoNombre;
         }
     }
 
     let usuario1=new Usuario('Ana');
     usuario1.getNombre();
     usuario1.setNombre('Maria');
+```
+✅ - Usando # para crear atributos privados a nivel de lenguaje (más común en clases).
+```js
+    class Usuario {
 
+    #nombreUsuario;
+
+    constructor(nombre) {
+        this.#nombreUsuario = nombre;
+    }
+
+    getNombre() {
+        return this.#nombreUsuario;
+    }
+
+    setNombre(nuevoNombre) {
+        this.#nombreUsuario = nuevoNombre;
+    }
+}
 ```
