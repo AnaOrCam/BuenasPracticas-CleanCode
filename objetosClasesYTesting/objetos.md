@@ -92,7 +92,7 @@ Mediante atributos privados en clases o *clousures* conseguimos:
 ```
 ✅ - Usando # para crear atributos privados a nivel de lenguaje (más común en clases).
 ```js
-    class Usuario {
+class Usuario {
 
     #nombreUsuario;
 
