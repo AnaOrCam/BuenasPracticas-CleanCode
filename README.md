@@ -1653,7 +1653,7 @@ function completaTarea() {
         if (num == 6){
             console.log('Tarea completada con éxito');
         }else{
-            console.log('No se pudo completar la tarea');}, 2000);    
+            console.log('No se pudo completar la tarea')}, 2000);    
   });
 }
 
