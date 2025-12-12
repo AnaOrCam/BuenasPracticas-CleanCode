@@ -1661,7 +1661,7 @@ function pedirNumero() {
 ```javascript
 async function solicitud() {
   try {
-    let resultado = await pedirNumero();
+    await pedirNumero();
     console.log(resultado);
   } catch (error) {
     console.error('No se pudo completar la tarea', error);
