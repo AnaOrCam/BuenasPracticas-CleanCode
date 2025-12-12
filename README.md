@@ -1589,13 +1589,12 @@ describe("Usuario",() => {
 _Realizado por Jose Manuel Vilchez Arenas_
 
 ## ¿Qué es la concurrencia?
-La concurrencia es una estrategia que nos ayuda a separar lo que se hace
-en nuestro código del cuando se hace. En aplicaciones de un solo hilo, el qué y cuando están
-juntos.
+La concurrencia es una estrategia que nos ayuda a separar lo que se haceen nuestro código 
+del cuando se hace. En aplicaciones de un solo hilo, el qué y cuando están siempre juntos.
 
-En definitiva, se busca ejecutar varias tareas en paralelo entre sí para aprovechar mejor los 
-recursos computacionales. Los encargados de proporcionar concurrencia son las llamadas 
-tareas asíncronas, que permiten separar la ejecución de nuestro programa en varios hilos.
+En definitiva, se busca ejecutar varias tareas en paralelo entre sí para aprovechar mejor 
+los recursos computacionales. Los encargados de proporcionar **concurrencia** son las llamadas 
+**tareas asíncronas**, que permiten separar la ejecución de nuestro programa en varios hilos.
 
 ### Ventajas
 * Mejora del rendimiento de nuestra aplicación
@@ -1609,24 +1608,24 @@ tareas asíncronas, que permiten separar la ejecución de nuestro programa en va
 
 ## NO USES CALLBACKS ⚠
 Los callbacks no son limpios en legibilidad ni en cuanto al formato de texto. Una buena práctica es la 
-implementación de promesas, que representan la finalización o fracaso de una tarea asíncrona.
+implementación de **promesas**, que representan la finalización o fracaso de una tarea asíncrona.
 
 **Mala implementación ❌**
 ```javascript
-const tarea = (callback) => {
+const pedirNumero = (callback) => {
   const num = 1 + Math.floor(Math.random() * 6)
     setTimeout(() => {
         if (num == 6){
-            console.log('Tarea completada con éxito');
+            console.log('Se ha obtenido el valor requerido');
         }else{
-            console.log('No se pudo completar la tarea')}, 2000);    
+            console.log('No se obtuvo el valor requerido')}, 2000);    
 }
-tarea()
+pedirNumero()
 
 ````
 **Buena implementación ✔**
 ```javascript
-const hacerTarea= () => {
+const pedirNumero= () => {
     return new Promise((resolve, reject)=>{
         const num = 1 + Math.floor(Math.random() * 6)
         if (num == 6){
@@ -1636,15 +1635,15 @@ const hacerTarea= () => {
     })
 }
 
-hacerTarea()
-        .then((num) => console.log('Tarea completada con éxito', num))
-        .catch((num) => console.log('No se pudo completar la tarea'))
+pedirNumero()
+        .then((num) => console.log('Se ha obtenido el valor requerido. ', num))
+        .catch((num) => console.log('No se obtuvo el valor requerido. ', num))
 ```
 
 ## Async/await ✅
 Podemos mejorar aún mas nuestro código mediante la implementación de async/await.
-Añadimos a funciones el prefijo _async_ para usar esta función de forma imperativa sin
-emplear ningun _.then()_ o _.catch()_
+Añadimos a las funciones el prefijo _async_ para usar esta función de forma imperativa 
+sinemplear ningun _.then()_ o _.catch()_
 
 ```javascript
 function completaTarea() {
@@ -1656,7 +1655,9 @@ function completaTarea() {
             console.log('No se pudo completar la tarea')}, 2000);    
   });
 }
+```
 
+```javascript
 async function solicitud() {
   try {
     let resultado = await completaTarea();
@@ -1667,7 +1668,7 @@ async function solicitud() {
 }
 solicitud()
 ```
-> En definitiva, esta tarea se completará si el número ha sido un 6 y tras un breve retardo de 2 segundos.
+> Usamos await para pausar la ejecución del programa hasta obtener el valor de retorno.
 
 # Comentarios
 
