@@ -1651,9 +1651,9 @@ function pedirNumero() {
   return new Promise(resolve => {
     setTimeout(() => {
         if (num == 6){
-            console.log('Tarea completada con éxito');
+            console.log('Se ha obtenido el valor requerido, un 6');
         }else{
-            console.log('No se pudo completar la tarea')}, 2000);    
+            console.log('No se obtuvo el valor requerido')}, 2000);    
   });
 }
 ```
@@ -1664,7 +1664,7 @@ async function solicitud() {
     let resultado = await pedirNumero();
     console.log(resultado);
   } catch (error) {
-    console.error('No se pudo completar la tarea. ', error);
+    console.error('No se pudo completar la tarea', error);
   }
 }
 
