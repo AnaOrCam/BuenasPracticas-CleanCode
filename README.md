@@ -1643,10 +1643,11 @@ pedirNumero()
 ## Async/await ✅
 Podemos mejorar aún mas nuestro código mediante la implementación de async/await.
 Añadimos a las funciones el prefijo _async_ para usar esta función de forma imperativa 
-sinemplear ningun _.then()_ o _.catch()_
+si nemplear ningun _.then()_ o _.catch()_
 
 ```javascript
-function completaTarea() {
+function pedirNumero() {
+  const num = 1 + Math.floor(Math.random() * 6)
   return new Promise(resolve => {
     setTimeout(() => {
         if (num == 6){
@@ -1660,12 +1661,13 @@ function completaTarea() {
 ```javascript
 async function solicitud() {
   try {
-    let resultado = await completaTarea();
+    let resultado = await pedirNumero();
     console.log(resultado);
   } catch (error) {
     console.error('No se pudo completar la tarea. ', error);
   }
 }
+
 solicitud()
 ```
 > Usamos await para pausar la ejecución del programa hasta obtener el valor de retorno.
