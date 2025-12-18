@@ -1640,10 +1640,10 @@ pedirNumero()
         .catch((num) => console.log('No se obtuvo el valor requerido. ', num))
 ```
 
-## Async/await ✅
+## Mejor aún, async/await ✅
 Podemos mejorar aún mas nuestro código mediante la implementación de async/await.
-Añadimos a las funciones el prefijo _async_ para usar esta función de forma imperativa 
-si nemplear ningun _.then()_ o _.catch()_
+Añadimos a las funciones el prefijo _async_ para usar la función de forma imperativa 
+sin emplear ningun _.then()_ o _.catch()_
 
 ```javascript
 function pedirNumero() {
@@ -1670,7 +1670,7 @@ async function solicitud() {
 
 solicitud()
 ```
-> Usamos await para pausar la ejecución del programa hasta obtener el valor de retorno.
+> Usamos await para pausar la ejecución de nuestro programa hasta obtener el valor de retorno.
 
 # Comentarios
 
